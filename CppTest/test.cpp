@@ -64,3 +64,13 @@ TEST(TestProblem1, Case5) {
 
     EXPECT_EQ(expected, result);
 }
+
+TEST(TestProblem2, Case1) {
+    auto problem2 = Problem2();
+
+    const std::string commands = "RRRRDDDLLUUUUUUURRDDDDR";
+    const std::string expected = "RRDDDLLUUU";
+    const std::string result = problem2.getLastLoop(commands);
+
+    EXPECT_EQ(expected, result);
+}

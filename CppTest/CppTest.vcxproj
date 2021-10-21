@@ -51,6 +51,9 @@
     <ProjectReference Include="..\Problem1\Problem1.vcxproj">
       <Project>{3231a304-3787-496a-b556-6cf5527ca68b}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Problem2\Problem2.vcxproj">
+      <Project>{1b089089-92fb-45e5-a76b-a87a7075dec9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
