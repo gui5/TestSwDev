@@ -21,7 +21,6 @@ std::string Problem2::getLastLoop(std::string_view commands) const noexcept
     // {horizontal,vertical}
     Pair currentPos;
 
-
     // U == vertical -
     // D == vertical +
     // L == horizoltal -
@@ -58,5 +57,5 @@ std::string Problem2::getLastLoop(std::string_view commands) const noexcept
             break;
         }
     }
-    return std::string(sequence.data() + currentPos.first, sequence.data()+sequence.size());
+    return std::string(sequence.data() + currentPos.first, sequence.data() + sequence.size());
 }
