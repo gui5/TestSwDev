@@ -65,6 +65,19 @@ TEST(TestProblem1, Case5) {
     EXPECT_EQ(expected, result);
 }
 
+TEST(TestProblem1, Case6) {
+
+    auto problem1 = p1::Problem1();
+
+    int m = 942568112;
+    int n = 01;
+
+    const std::string expected = "Novecentos e quarenta e dois milhões quinhentos e sessenta e oito mil cento e doze reais e um centavo";
+    const std::string result = problem1.convertAmount2Words(m, n);
+
+    EXPECT_EQ(expected, result);
+}
+
 TEST(TestProblem2, Case1) {
     auto problem2 = Problem2();
 

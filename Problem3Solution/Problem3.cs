@@ -5,6 +5,12 @@ namespace Problem3Solution
 {
     public class Problem3
     {
+       
+        /// <summary>
+        /// Verify if a string is a permutation (rearrangement) of a  palindrome
+        /// </summary>
+        /// <param name="palindrome"></param>
+        /// <returns></returns>
         public string isPalindromePermutation(string palindrome)
         {
             var ss = palindrome.ToLower();

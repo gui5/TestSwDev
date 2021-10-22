@@ -25,8 +25,9 @@ namespace p1
         "quinhentos","seiscentos","setecentos","oitocentos",
     "novecentos" };
 
-    constexpr const std::array<const char*, 9> SCALE =
-    { "","mil","milhão","bilhão" };
+    constexpr const std::array<const std::array<const char*, 2>, 4> SCALE = 
+    { "","", "mil","mil", "milhão","milhões", "bilhão","bilhões" };
+
 
     std::string Problem1::convertAmount2Words(int m, int n) const noexcept
     {
@@ -34,8 +35,6 @@ namespace p1
         {
             return "Zero";
         }
-
-        // Splitting the digits in groups of three
 
         std::array<int, digitsGroupSize> numberGroups = { 0,0,0,0 };
         std::array<std::string, digitsGroupSize> wordsGroups;
@@ -51,21 +50,30 @@ namespace p1
             wordsGroups[i] = threeDigit2Words(numberGroups[i]);
         }
 
-        // rearange the words groups appluying the scale
         std::ostringstream result;
 
         for (int i = digitsGroupSize - 1; i >= 0; i--)
         {
+
             if (i == 1 && numberGroups[i] == 1) {
-                result << SCALE[i] << " ";
+                result << (i > 1 ? SCALE[i][1] : SCALE[i][0]) << " ";
             }
-            else if(!wordsGroups[i].empty())
+            else if (!wordsGroups[i].empty())
             {
-                result << wordsGroups[i] << " " << SCALE[i];
-                if (i > 0) {
-                    result << " e ";
+                result << wordsGroups[i] << " " << (numberGroups[i] > 1 ? SCALE[i][1] : SCALE[i][0]);
+                if (i - 1 >= 0)
+                {
+                    if (numberGroups[i - 1] == 0) {
+                        result << " e ";
+                    }
+                    else
+                    {
+                        result << " ";
+                    }
                 }
+                
             }
+           
         }
 
         result << [&numberGroups]() {if (numberGroups[0] == 1
@@ -73,7 +81,7 @@ namespace p1
             && numberGroups[2] == 0
             && numberGroups[3] == 0)
             return "real";
-        return "reais"; 
+        return "reais";
         }();
 
         if (n > 0)
@@ -100,7 +108,7 @@ namespace p1
             }
             else
             {
-                words << (tensUnits != 0 ? w + " e" : w);
+                words << (tensUnits != 0 ? w + " e " : w + " ");
             }
         }
 
